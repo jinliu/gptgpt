@@ -1,2 +1,1 @@
-# gptgpt
-Use GPT to generate code that uses GPT 
+# gptgpt: Use GPT to generate code that uses GPT

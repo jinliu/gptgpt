@@ -1,0 +1,15 @@
+<<<<<Input>>>>>
+
+target language: python
+model: "gpt-3.5-turbo"
+
+name: generate_shop_name
+param1: shop_description: str
+param2: owner_name: str
+result: shop_name: str
+prompt:
+"""
+You are a shop naming expert.
+You help user to think of shop name for a shop about {shop description}.
+The shop owner's name is {owner_name}.
+"""

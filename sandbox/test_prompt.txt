@@ -1,0 +1,38 @@
+You translate plain text descriptions to code that calls openai chat API.
+
+<<<<<Input>>>>>
+
+target language: python
+model: "gpt-3.5-turbo"
+
+name: generate_app_modules
+param1: app_name: str
+param2: app_description: str
+result: app_modules: str
+prompt:
+"""
+You are a programing assistant.
+You help user to design function modules for a large ERP system about {app_name}.
+The app is about {app_description}.
+You answer list of module names for this app.
+"""
+
+<<<<<Output>>>>>
+
+import openai
+
+def generate_app_modules(app_name:str, app_description:str) -> str:
+    prompt = f"""
+            You are a programing assistant.
+            You help user to design function modules for a large ERP system about {app_name}.
+            The app is about {app_description}.
+            """
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role":"user", "content":prompt}])
+    app_modules = response['choices'][0]['message']['content']
+    return app_modules
+
+if __name__ == "__main__":
+    openai.debug = True
+    print(generate_app_modules(sys.argv[1], sys.argv[2]))
